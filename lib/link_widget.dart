@@ -95,7 +95,7 @@ class _LinkWidgetState extends State<LinkWidget> {
         double y = details.globalPosition.dy;
         print("按下时x:$x,y:$y");
         // 按下时坐标与问题项位置比较
-        for(int i = 0; i<_questionKeys.length; i++){
+        for(int i = 0; i<widget.questions.length; i++){
           RenderBox renderBox = _questionKeys[i].currentContext.findRenderObject();
           if(_isInOption(x: x, y: y, renderBox: renderBox)){
             double startX = renderBox.localToGlobal(Offset(renderBox.size.width,renderBox.size.height)).dx;
@@ -106,7 +106,7 @@ class _LinkWidgetState extends State<LinkWidget> {
           }
         }
         // 按下时坐标与答案项位置比较
-        for(int i = 0; i<_answerKeys.length; i++){
+        for(int i = 0; i<widget.answers.length; i++){
           RenderBox renderBox = _answerKeys[i].currentContext.findRenderObject();
           if(_isInOption(x: x, y: y, renderBox: renderBox)){
             double startX = renderBox.localToGlobal(Offset.zero).dx;
@@ -126,7 +126,7 @@ class _LinkWidgetState extends State<LinkWidget> {
           double x = touchPosition.startX;
           double y = touchPosition.startY;
           // 松开时坐标与答案项位置比较
-          for(int i = 0; i<_answerKeys.length; i++){
+          for(int i = 0; i< widget.answers.length; i++){
             RenderBox renderBox = _answerKeys[i].currentContext.findRenderObject();
             if(_isInOption(x: x, y: y, renderBox: renderBox)){
               print("松开时在${widget.answers[i]}里面！");
@@ -142,7 +142,7 @@ class _LinkWidgetState extends State<LinkWidget> {
             }
           }
           // 松开时坐标与问题项位置比较
-          for(int i = 0; i<_questionKeys.length; i++){
+          for(int i = 0; i< widget.questions.length; i++){
             RenderBox renderBox = _questionKeys[i].currentContext.findRenderObject();
             if(_isInOption(x: x, y: y, renderBox: renderBox)){
               print("松开时在${widget.questions[i]}里面！");
